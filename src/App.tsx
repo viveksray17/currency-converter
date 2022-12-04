@@ -44,14 +44,16 @@ const App: FC = () => {
 							fromValue,
 							toValue
 						);
-						const convertedAmount: number = parseInt(amount) * currencyValue;
-						setConvertedAmount(convertedAmount.toFixed(2));
+						if(parseInt(amount)){
+							const convertedAmount: number = parseInt(amount) * currencyValue;
+							setConvertedAmount(convertedAmount.toFixed(2));
+						}else alert("amount should be a number");
 					}
 				}}
 			>
 				Get Rate
 			</button>
-			{convertedAmount && <div>{convertedAmount}</div>}
+			{convertedAmount && <div>Converted amount is: {convertedAmount}</div>}
 		</div>
 	);
 };

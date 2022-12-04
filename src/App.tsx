@@ -15,9 +15,10 @@ const App: FC = () => {
 	const amountRef = useRef<HTMLInputElement>(null);
 	const [convertedAmount, setConvertedAmount] = useState<string | null>(null);
 	return (
-		<div>
+		<div className="container">
 			<input placeholder="enter amount" ref={amountRef} />
-			<span>from</span>
+			<br />
+			<span>From</span>
 			<select ref={fromCurrencyRef}>
 				{CURRENCIES.map((currency, index) => (
 					<option key={index} value={currency}>
@@ -25,7 +26,8 @@ const App: FC = () => {
 					</option>
 				))}
 			</select>
-			<span>to</span>
+			<br />
+			<span>To</span>
 			<select ref={toCurrencyRef}>
 				{CURRENCIES.map((currency, index) => (
 					<option key={index} value={currency}>
@@ -33,6 +35,7 @@ const App: FC = () => {
 					</option>
 				))}
 			</select>
+			<br />
 			<button
 				className="btn btn-primary btn-sm"
 				onClick={async () => {
@@ -44,14 +47,14 @@ const App: FC = () => {
 							fromValue,
 							toValue
 						);
-						if(parseInt(amount)){
+						if (parseInt(amount)) {
 							const convertedAmount: number = parseInt(amount) * currencyValue;
 							setConvertedAmount(convertedAmount.toFixed(2));
-						}else alert("amount should be a number");
+						} else alert("amount should be a number");
 					}
 				}}
 			>
-				Get Rate
+				Get Amount
 			</button>
 			{convertedAmount && <div>Converted amount is: {convertedAmount}</div>}
 		</div>
